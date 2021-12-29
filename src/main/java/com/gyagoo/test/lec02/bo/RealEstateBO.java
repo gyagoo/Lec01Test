@@ -1,6 +1,7 @@
 package com.gyagoo.test.lec02.bo;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import com.gyagoo.test.lec02.dao.RealEstateDAO;
 import com.gyagoo.test.lec02.model.RealEstate;
 
 @Service
-public class RealEstateBO {
+public class RealEstateBO{
 	
 	@Autowired
 	private RealEstateDAO realEstateDAO;
@@ -22,5 +23,7 @@ public class RealEstateBO {
 		return realEstateDAO.selectRentPrice(rentPrice);
 	}
 	
-	// HaspMap<String, Object> map = new HashMap<String, Object>();
+	public List<RealEstate> getAreaPrice(int area, int price) {
+		return realEstateDAO.selectAreaPrice(area, price);
+	}
 }

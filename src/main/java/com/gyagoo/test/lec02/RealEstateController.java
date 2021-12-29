@@ -21,15 +21,19 @@ public class RealEstateController {
 	public RealEstate test01(@RequestParam(value="id", defaultValue="5") int id) {
 		return realEstateBO.getRealEstate(id);
 	}
+	// 디폴트 값은 22였으나 테이블에 값이 존재하지 않아 5로 지정
 	
 	@RequestMapping("/test02")
-	public List<RealEstate> test02(@RequestParam("rentPrice") int rentPrice) {
+	public List<RealEstate> test02(@RequestParam(value="rentPrice", defaultValue="90") int rentPrice) {
 		return realEstateBO.getRentPrice(rentPrice);
 	}
+	// 디폴트 값은 예시에 나와있는 값으로 함
 	
-//	@RequestMapping("/test03")
-//	public RealEstate test03(@RequestParam("area") int area
-//							,@RequestParam("price") int price) {
-//		return realEstateBO
-//	}
+	@RequestMapping("/test03")
+	public List<RealEstate> test03(@RequestParam(value="area", defaultValue="90") int area
+							,@RequestParam(value="price", defaultValue="130000") int price) {
+		return realEstateBO.getAreaPrice(area, price);
+	}
+	// 디폴트 값은 예시에 나와있는 값으로 함
+	
 }
