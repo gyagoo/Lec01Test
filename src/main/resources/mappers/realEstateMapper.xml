@@ -37,10 +37,12 @@
  			`real_estate`
  		WHERE		
  			`rentPrice` <![CDATA[ < ]]> #{rentPrice}
+ 			<!-- 조건을 모두 CDATA 안에 넣어도 상관 없음 -->
  	</select>
  	
  	<select id="selectAreaPrice" resultType="com.gyagoo.test.lec02.model.RealEstate" 
- 	parameterType="int">
+ 	parameterType="map">
+ 	<!-- 파라미터 타입이 여러가지일 경우 map으로 설정하면 spring이 알아서 처리 -->
  		SELECT
  			`id`
  			,	`realtorId`
@@ -57,7 +59,9 @@
  			`area` <![CDATA[ >= ]]> #{area}
  		AND
  			`price` <![CDATA[ <= ]]> #{price}
+ 		AND
+ 			`type` <![CDATA[ = ]]> "매매"
  		ORDER BY
- 			`createdAt` DESC
+ 			`id` DESC	<!-- 최근 데이터가 상위에 존재하기 때문에 id 사용 -->
  	</select>
  </mapper>

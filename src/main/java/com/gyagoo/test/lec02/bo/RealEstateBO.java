@@ -14,15 +14,15 @@ public class RealEstateBO{
 	
 	@Autowired
 	private RealEstateDAO realEstateDAO;
-	
+	// test01
 	public RealEstate getRealEstate(int id) {
 		return realEstateDAO.selectRealEstate(id);
 	}
-	
+	// test02
 	public List<RealEstate> getRentPrice(int rentPrice) {
 		return realEstateDAO.selectRentPrice(rentPrice);
 	}
-	
+	// test03
 	public List<RealEstate> getAreaPrice(int area, int price) {
 		return realEstateDAO.selectAreaPrice(area, price);
 	}
