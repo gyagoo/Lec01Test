@@ -46,7 +46,7 @@
 				</div>
 			</div>
 		
-			<input type="submit" class="btn btn-primary text-white" value="추가">
+			<input type="submit" class="btn btn-primary text-white mt-3" value="추가">
 		</form>
 	</div>
 </body>

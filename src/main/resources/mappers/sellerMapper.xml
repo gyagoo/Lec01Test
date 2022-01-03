@@ -23,6 +23,7 @@
  		)
  	</insert>
 <!-- 2 --> 
+<!-- 파라미터는 다 가져오는게 일반적 -->
  	<select id="selectSeller" resultType="com.gyagoo.test.lec04.model.Seller" parameterType="map">
  		SELECT 
  			`id`

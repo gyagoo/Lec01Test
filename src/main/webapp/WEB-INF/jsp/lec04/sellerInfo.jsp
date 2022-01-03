@@ -15,16 +15,16 @@
 <body>
 	<div class="container">
 		<div class="seller">
-			<h1 class="text-weight-bold mt-2">판매자 정보</h1>
+			<div class="display-4 text-weight-bold mt-2">판매자 정보</div>
 		</div>
 		<div class="img">
 			<img src="${result.profileImageUrl }" alter="sellerImg" width="500">
 		</div>
 		<div class="nickname">
-			<h1 class="mt-3">${result.nickname }</h1>
+			<div class="display-2 fw-lighter mt-3">${result.nickname }</div>
 		</div>
 		<div class="temperature">
-			<h4 class="text-warning">${result.temperature }</h4>
+			<div class="display-4 text-warning">${result.temperature }</div>
 		</div>
 	</div>
 </body>

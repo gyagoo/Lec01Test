@@ -23,6 +23,7 @@ public class SellerController {
 	public String addSellerView() {
 		return "lec04/addSeller";
 	}
+//	test 1
 	@ResponseBody
 	@RequestMapping("test01/add_seller")
 	public String addSeller(
@@ -34,23 +35,22 @@ public class SellerController {
 		return "입력 성공 : " + count;
 	}
 
-	
+//	test 2 + 3
+//	query가 달라지면 BO 와 DAO 는 따로 만들어야 함
 	@RequestMapping("/test01/2")
-	public String getSeller(Model model) {
+	public String findSeller(@RequestParam(value="id", required=false) Integer id, Model model) {
+		// "id" 형태로 받아온 값을 id 에 저장하게 됨
+		// default : required=true 가 포함 -> required=false 로 바꿔 입력받은 id 가 없어도 처리되도록 변경
+		// int 는 null 불가능 -> Integer 로 변경
 		
-		Seller seller = sellerBO.getSeller();
-		model.addAttribute("result", seller);
-		
-		return "lec04/sellerInfo";
-	}
-	
-	
-	@RequestMapping("/test01/3")
-	public String findSeller(@RequestParam(value="id", defaultValue="1") int id, Model model) {
-		
-		Seller seller = sellerBO.findSeller(id);
-		model.addAttribute("result", seller);
-		
+		if (id == null) {
+			Seller seller = sellerBO.getSeller();
+			model.addAttribute("result", seller);			
+		} else {
+			Seller seller = sellerBO.findSeller(id);
+			model.addAttribute("result", seller);
+		}
+
 		return "lec04/sellerInfo";
 	}
 }
