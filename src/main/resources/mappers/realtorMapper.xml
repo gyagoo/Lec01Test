@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.gyagoo.test.lec04.dao.RealtorDAO">
+ 	<insert id="insertRealtor" parameterType="com.gyagoo.test.lec04.model.Realtor"
+ 	useGeneratedKeys="true" keyProperty="id"> <!-- insert 하는 key 생성과 해당하는 컬럼 -->
+ 		INSERT INTO `realtor` 
+ 		(
+ 			`office`
+ 			,	`phoneNumber`
+ 			,	`address`
+ 			,	`grade`
+ 			,	`createdAt`
+ 			,	`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{office}
+ 			,	#{phoneNumber}
+ 			,	#{address}
+ 			,	#{grade}
+ 			,	now()
+ 			,	now() 			
+ 		)
+ 	</insert>
+ </mapper>
