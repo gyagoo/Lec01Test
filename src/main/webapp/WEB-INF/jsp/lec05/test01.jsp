@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,16 +21,23 @@
 	<h3>나누기 : ${number1 / number2 }</h3>
 	
 	<h1>3. core out</h1>
-	<c:out var="<title>'core out'</title>" />
+	<c:out value="<title>core out</title>" />
 	
-	<h1>4. core if</h1>
+<!-- avg -->
 	<c:if test="${(number1 + number2)/2 >=10 }">
 		<h1>4. JSTL core if</h1>
+		<h1>${(number1 + number2)/2 }</h1>		
 	</c:if>
 	<c:if test="${(number1 + number2)/2 < 10 }">
 		<h3>4. JSTL core if</h3>
+		<h3>${(number1 + number2)/2 }</h3>
 	</c:if>	
 	
-	<h1>5. core if</h1> <!-- 할 일 -->
+	<h1>5. core if</h1>
+	<c:if test="${number1 * number2 > 100 }">
+		<c:out value="<script>alert('너무 큰 수 입니다.')</script>" escapeXml="false"/>	
+	</c:if>
+	
+
 </body>
 </html>
