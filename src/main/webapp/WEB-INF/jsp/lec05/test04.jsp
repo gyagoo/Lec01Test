@@ -39,7 +39,9 @@
 							<c:choose>
 								<%-- 
 									{fn} 안에 {멤버변수} 사용이 안됨 -> 괄호 범위 중복인듯(해결완료) 
+
 										EL 태그는 한 번만 사용한다
+
 									조건문 통제 오류 -> '조건문' 수정 필요(해결완료)
 								--%>
 								<c:when test="${fn:substring(member.phoneNumber, 0, 3) ne '010'}">
@@ -61,14 +63,17 @@
 						</td>
 						<td>
 							${fn:substring(member.nationality, 0, 2) } - ${fn:split(member.nationality, " ")[1] }
+
 							<%--
 								${fn:replace(member.nationality, "삼국시대", "삼국 - ")}
 							 --%>
+
 						</td>
 						<td>
 							<b>${fn:split(member.email, "@")[0] }</b>@${fn:split(member.email, "@")[1] }
 						</td>
 						<td>
+
 							<c:choose>
 								<c:when test="${fn:length(member.introduce) > 15 }">
 									${fn:substring(member.introduce, 0, 15)} ...
@@ -77,6 +82,7 @@
 									${member.introduce }
 								</c:otherwise>
 							</c:choose>
+
 						</td>
 					</tr>
 				</c:forEach>
