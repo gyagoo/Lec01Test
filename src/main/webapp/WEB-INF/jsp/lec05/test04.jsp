@@ -18,6 +18,7 @@
 </head>
 <body>
 	<div class="container">
+		<h1>회원 정보 리스트</h1>
 		<table class="table text-center">
 			<thead>
 				<tr>
@@ -36,23 +37,47 @@
 						<td>${member.name }</td>
 						<td>
 							<c:choose>
-								<c:when test="${!fn:starsWith(${member.phoneNumber}, '010') }">
+								<%-- 
+									{fn} 안에 {멤버변수} 사용이 안됨 -> 괄호 범위 중복인듯(해결완료) 
+										EL 태그는 한 번만 사용한다
+									조건문 통제 오류 -> '조건문' 수정 필요(해결완료)
+								--%>
+								<c:when test="${fn:substring(member.phoneNumber, 0, 3) ne '010'}">
 									유효하지 않은 전화번호
 								</c:when>
 								<c:otherwise>
 									${member.phoneNumber }
 								</c:otherwise>
+								
+								<%--
+									<c:when test="${fn:startsWith(member.phoneNumber, '010')}">
+										${member.phoneNumber}
+									</c:when>
+									<c:otherwise>
+										유효하지 않은 전화번호
+									</c:otherwise>
+								 --%>
 							</c:choose>
-						${member.phoneNumber }</td>
-						<td>
-							${fn:substring(${member.nationality }, 0, 2) } - ${fn:substring(${member.nationality }, 5, ) }
 						</td>
 						<td>
-							<b>${fn:split(${member.email }, "@")[0] }</b>
-							${fn:split(${member.email }, "@")[1] }
+							${fn:substring(member.nationality, 0, 2) } - ${fn:split(member.nationality, " ")[1] }
+							<%--
+								${fn:replace(member.nationality, "삼국시대", "삼국 - ")}
+							 --%>
 						</td>
-						<td>${member.Introduce }</td>
-						<%-- 자기소개 수정 --%>
+						<td>
+							<b>${fn:split(member.email, "@")[0] }</b>@${fn:split(member.email, "@")[1] }
+						</td>
+						<td>
+							<c:choose>
+								<c:when test="${fn:length(member.introduce) > 15 }">
+									${fn:substring(member.introduce, 0, 15)} ...
+								</c:when>
+								<c:otherwise>
+									${member.introduce }
+								</c:otherwise>
+							</c:choose>
+						</td>
 					</tr>
 				</c:forEach>
 			
