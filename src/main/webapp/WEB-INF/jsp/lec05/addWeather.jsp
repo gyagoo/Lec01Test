@@ -14,12 +14,10 @@
 <title>add weather page</title>
 </head>
 <body>
-	<div class="container">
-		<div>
-			<%@ include file="nav.jsp" %>
-		</div>
+	<div id="wrap">
+		<div class="container d-flex">
+			<%@ include file="sidebar.jsp" %>
 		
-		<div>
 			<section>
 				<div class="add_page_title"><h1>날씨 입력</h1></div>
 				
@@ -80,6 +78,7 @@
 					</form>			
 				</div>
 			</section>
+			
 		</div>
 	</div>
 </body>

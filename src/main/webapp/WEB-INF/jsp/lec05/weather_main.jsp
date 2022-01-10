@@ -13,16 +13,30 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<!-- 선생님 코드 -->
+  <link rel="stylesheet" href="style.css" type="text/css">
+  
 <title>weather</title>
 </head>
 <body>
-	<div class="container flex-shrink-0 p-3">
-		<div>
-			<%@ include file="nav.jsp" %>
-		</div>
-		<div>
-			<section class="weather">
+	<div id="wrap">
+		<div class="d-flex">
+			
+			 <nav>
+			     <div class="logo d-flex justify-content-center mt-3">
+			         <img class="logo-image mr-2" src="https://www.kma.go.kr/kma/resources/images/sub/sig2.png" > 
+			         <span class="text-white logo-text">기상청</span>
+			     </div>
+			
+			     <ul class="nav flex-column mt-4">
+			         <li class="nav-item"><a href="/lec05/weather" class="nav-link main-link">날씨</a></li>
+			         <li class="nav-item"><a href="/lec05/view" class="nav-link main-link">날씨입력</a></li>
+			         <li class="nav-item"><a href="#" class="nav-link main-link">테마날씨</a></li>
+			         <li class="nav-item"><a href="#" class="nav-link main-link">관측 기후</a></li>
+			     </ul>
+			 </nav>
+			
+			<section class="weather mt-3 ml-5">
 				<h1>과거 날씨</h1>
 				<table class="table text-center">
 					<thead>
@@ -36,11 +50,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="weather" items="weather">
+						<c:forEach var="weather" items="${weatherhistory}">
 							<tr>
 								<td>
 									<%-- Date 타입으로 받았기 때문에 parseDate 필요 없음 --%>
-									<fmt:formatDate value="${weather.date}" pattern="yyyy년 MM월 dd일" />
+									<fmt:formatDate value="${weather.date}" pattern="yyyy년 M월 d일" />
 								</td>
 								<td>
 									<c:choose>
@@ -58,16 +72,16 @@
 										</c:when>
 									</c:choose>
 								</td>
-								<td><fmt:formatNumber value="${member.temperatures}" pattern="##.#" />℃</td>
-								<td><fmt:formatNumber value="${member.precipitation}" pattern="##.#" />mm</td>
+								<td><fmt:formatNumber value="${weather.temperatures}" pattern="##.#" />℃</td>
+								<td><fmt:formatNumber value="${weather.precipitation}" pattern="##.#" />mm</td>
 								<td>${weather.microDust }</td>
-								<td><fmt:formatNumber value="${member.windSpeed}" pattern="##.#" />km/h</td>
+								<td><fmt:formatNumber value="${weather.windSpeed}" pattern="##.#" />km/h</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</section>
-		</div>
+	</div>		
 	
 	</div>
 </body>

@@ -11,19 +11,7 @@ import com.gyagoo.test.lec05.model.Weather;
 @Repository
 public interface WeatherDAO {
 	
-	public List<Weather> selectWeather(
-			 @Param("date") Date date
-			 , @Param("weather") String weather
-			 , @Param("temperatures") double temperatures
-			 , @Param("precipitation") double precipitation
-			 , @Param("microDust") String microDust
-			 , @Param("windSpeed") double windSpeed);
+	public List<Weather> selectWeather();
 	
-	public int insertWeather(
-			 @Param("date") Date date
-			 , @Param("weather") String weather
-			 , @Param("temperatures") double temperatures
-			 , @Param("precipitation") double precipitation
-			 , @Param("microDust") String microDust
-			 , @Param("windSpeed") double windSpeed);
+	public int insertWeather(Weather weather);
 }

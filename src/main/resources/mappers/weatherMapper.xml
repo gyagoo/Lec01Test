@@ -18,7 +18,8 @@
  			`weatherhistory`
  	</select>
  	
- 	<insert id="insertWeather" parameterType="com.gyagoo.test.lec05.model.Weather">
+ 	<insert id="insertWeather" parameterType="com.gyagoo.test.lec05.model.Weather" 
+ 	useGeneratedKeys="true" keyProperty="id">
  		INSERT INTO `weatherhistory`
  		(
  			`date`
