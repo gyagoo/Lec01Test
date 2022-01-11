@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.gyagoo.test.lec06.dao.UrlDAO">
+ 	<insert id="insertUrl" parameterType="map">
+ 		INSERT INTO `url`
+ 		(
+ 			`name`
+ 			,	`url`
+ 			,	`createdAt`
+ 			,	`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{name}
+ 			,	#{url}
+ 			,	now(),
+ 			,	now()
+ 		)
+ 	</insert>
+ 	
+ 	<select id="com.gyagoo.test.lec06.dao.UrlDAO" resultType="com.gyagoo.test.lec06.model.Url">
+ 		SELECT
+ 			`id`
+ 			,	`name`
+ 			,	`url`
+ 			,	`createdAt`
+ 			,	`updatedat`
+ 		FROM 
+ 			`url`
+ 		
+ 	</select>
+ 
+ </mapper>
+ 
+ 
