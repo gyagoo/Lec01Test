@@ -28,7 +28,7 @@
 				<tr>
 					<td>${status.count}</td>
 					<td>${url.name }</td>
-					<td>${url.url }</td>
+					<td><a href="${url.url }">${url.url }</a></td>
 				</tr>
 			</c:forEach>
 		<tbody>

@@ -8,7 +8,7 @@ import com.gyagoo.test.lec06.model.Url;
 
 public interface UrlDAO {
 
-	public int insertDAO(
+	public int insertUrl(
 			@Param("name") String name,
 			@Param("url") String url);
 	

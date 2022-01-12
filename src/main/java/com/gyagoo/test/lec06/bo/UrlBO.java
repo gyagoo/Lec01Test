@@ -15,7 +15,7 @@ public class UrlBO {
 	private UrlDAO urlDAO;
 	
 	public int addURL(String name, String url) {
-		return urlDAO.insertDAO(name, url);
+		return urlDAO.insertUrl(name, url);
 	}
 	public List<Url> getUrl() {
 		return urlDAO.selectUrl();

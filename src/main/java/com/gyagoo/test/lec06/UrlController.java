@@ -25,10 +25,11 @@ public class UrlController {
 	}
 	
 	@ResponseBody
-	@PostMapping("lec06/add_url")
-	public String test02(
+	@PostMapping("/lec06/add_url")
+	public String test02(			// insert
 			@RequestParam("name") String name,
 			@RequestParam("url") String url) {
+		
 		int count = urlBO.addURL(name, url);
 		
 		// 삽입 성공하면 success 전달
@@ -38,13 +39,13 @@ public class UrlController {
 			return "fail";
 		}
 	}
-	
+	@GetMapping("/lec06/url_list")
 	public String test03(Model model) {
 		
 		List<Url> url_list = urlBO.getUrl();
 		model.addAttribute("url_list", url_list);
 		
-		return "lec06/url_list";
+		return "lec06/url_list";		// 무엇을 return 할 것인가? jsp 경로 !
 	}
 	
 }

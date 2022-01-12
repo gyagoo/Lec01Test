@@ -15,12 +15,12 @@
  		(
  			#{name}
  			,	#{url}
- 			,	now(),
+ 			,	now()
  			,	now()
  		)
  	</insert>
  	
- 	<select id="com.gyagoo.test.lec06.dao.UrlDAO" resultType="com.gyagoo.test.lec06.model.Url">
+ 	<select id="selectUrl" resultType="com.gyagoo.test.lec06.model.Url">
  		SELECT
  			`id`
  			,	`name`
