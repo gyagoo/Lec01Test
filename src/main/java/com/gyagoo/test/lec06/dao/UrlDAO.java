@@ -13,4 +13,8 @@ public interface UrlDAO {
 			@Param("url") String url);
 	
 	public List<Url> selectUrl();
+	
+	public int selectCountUrl(@Param("url") String url);
+	
+	public int deleteUrl(@Param("id") int id);
 }

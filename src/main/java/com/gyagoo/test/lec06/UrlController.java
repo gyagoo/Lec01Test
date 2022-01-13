@@ -1,6 +1,8 @@
 package com.gyagoo.test.lec06;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,5 +49,33 @@ public class UrlController {
 		
 		return "lec06/url_list";		// 무엇을 return 할 것인가? jsp 경로 !
 	}
+//	test02
+	@ResponseBody
+	@PostMapping("/lec06/duplicate_url") // Get -> Post
+	public Map<String, String> duplicateUrl(@RequestParam("url") String url) {
+		Map<String, String> result = new HashMap<>();
+		
+		if (urlBO.isDuplicateUrl(url) == true) {
+			result.put("isDuplicate", "true");
+		} else {
+			result.put("isDuplicate", "false");
+		}
+		
+		return result;
+	}
+//	delete
+	@ResponseBody
+	@GetMapping("/lec06/delete_url")	// id만 받으면 되기 때문에 Get
+	public String deleteUrl(@RequestParam("id") int id) {
+		int count = urlBO.deleteUrl(id);
+		
+		if (count == 0) {
+			return "fail";
+		} else {
+			return "success";	// id는 유일하기 때문에 0이 아닌 경우는 모두 삭제가 성공됨을 의미
+		}
+		// id를 어떻게 전달할 것인가?
+	}
+
 	
 }

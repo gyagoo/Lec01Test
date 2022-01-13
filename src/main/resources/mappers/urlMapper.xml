@@ -32,6 +32,21 @@
  		
  	</select>
  
+<!-- test02 --> 
+ 	<select id="selectCountUrl" resultType="int" parameterType="string">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`url`
+ 		WHERE
+ 			`url` = #{url}
+ 	</select>
+ 	
+ 	<delete id="deleteUrl" parameterType="int">
+ 		DELETE FROM `url`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
  </mapper>
  
  

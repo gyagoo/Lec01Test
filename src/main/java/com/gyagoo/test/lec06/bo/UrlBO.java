@@ -20,4 +20,18 @@ public class UrlBO {
 	public List<Url> getUrl() {
 		return urlDAO.selectUrl();
 	}
+	
+	// test02
+	public Boolean isDuplicateUrl(String url) {
+		int count = urlDAO.selectCountUrl(url);
+		if (count == 0) {
+			return false;	// count가 0이면 중복X
+		} else {
+			return true;
+		}
+	}
+	
+	public int deleteUrl(int id) {
+		return urlDAO.deleteUrl(id);
+	}
 }
