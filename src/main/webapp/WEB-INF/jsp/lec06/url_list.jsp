@@ -25,16 +25,16 @@
 				<th></th>
 			</tr>
 		</thead>
+
+		<tbody>
 			<c:forEach var="url" items="${url_list}" varStatus="status">
 				<tr>
 					<td>${status.count}</td>
 					<td>${url.name }</td>
 					<td><a href="${url.url }">${url.url }</a></td>
-					<td><button class="deleteBtn btn btn-danger form-control btn-sm" data-url-id="${url.id }">삭제</button></td>
+					<td><button class="deleteBtn btn btn-danger form-control btn-sm" data-url-id="${url.id }">삭제</button></td> 
 				</tr>
 			</c:forEach>
-		<tbody>
-			
 		</tbody>
 		
 	</table>
@@ -42,7 +42,7 @@
 	<script>
 		$(document).ready(function() {
 			$(".deleteBtn").on("click", function() {	// 버튼이 하나가 아니기 때문에 id 사용X
-				let id = $(this).data("url-id");	// this는 이벤트를 위해 클릭된 버튼을 의미
+				let id = $(this).data("url-id");	// this는 이벤트를 위해 클릭된 버튼을 의미 *****, data- 속성 추가와 사용 *****
 	
 				$.ajax({
 					type:"get",
