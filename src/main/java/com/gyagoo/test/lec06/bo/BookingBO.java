@@ -28,4 +28,9 @@ public class BookingBO {
 	public int addBooking(String name, int headcount, Date date, int day, String phoneNumber, String state) {
 		return bookingDAO.insertBooking(name, headcount, day, date, phoneNumber, state);
 	}
+	
+	// inquire
+	public List<Booking> inquireBooking(String name, String phoneNumber) {
+		return bookingDAO.selectBooking_NamePhone(name, phoneNumber);
+	}
 }

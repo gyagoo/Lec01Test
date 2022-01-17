@@ -71,4 +71,13 @@ public class BookingController {
 			return "fail";
 		}
 	}
+	
+	@GetMapping("/lec06/inquire_booking")
+	public String inquireBooking(
+			@RequestParam("name") String name,
+			@RequestParam("phoneNumber") String phoneNumber, Model model) {
+		List<Booking> mybooking = bookingBO.inquireBooking(name, phoneNumber);
+		model.addAttribute("mybooking", mybooking);
+		return "lec06/pension/main";
+	}
 }

@@ -49,4 +49,19 @@
  		)
  	</insert>
  
+ 	<select id="selectBooking_NamePhone" resultType="String" parameterType="String" >
+ 		SELECT
+ 			`name`
+ 			,	`date`
+ 			,	`day`
+ 			,	`headcount`
+ 			,	`state`
+ 			,	`createdAt`
+ 			,	`updatedAt`
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name}
+ 			`phoneNumber` = #{phoneNumber}
+ 	</select>
  </mapper>

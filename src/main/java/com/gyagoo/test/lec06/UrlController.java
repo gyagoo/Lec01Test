@@ -74,7 +74,7 @@ public class UrlController {
 		} else {
 			return "success";	// id는 유일하기 때문에 0이 아닌 경우는 모두 삭제가 성공됨을 의미
 		}
-		// id를 어떻게 전달할 것인가?
+		// id를 어떻게 전달할 것인가? this를 통해!
 	}
 
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-        <link rel="stylesheet" href="style.css" type="text/css">
+         <link href="${path}/resources/style.css" rel="stylesheet" >
 <title>Pension Main</title>
 </head>
 <body>
@@ -41,14 +42,16 @@
                 </article>
                 <article class="reservation-confirm">
                     <div class="m-4">
+                    	
                         <div class="d-flex align-items-end">
-                            <h3 class="mr-4">예약 확인</h3>
+                            <h3 class="mr-4 mt-4">예약 확인</h3>
                         
                             <label>회원
                             <input type="radio" name="type" value='member' checked></label>
                             <label class="ml-3">비 회원
                             <input type="radio" name="type" value="nonMemeber"></label>
                         </div>
+                        <%--
                         <div class="member-input mt-3" id="member">
                             <div class="input-gorup form-inline">
                                 <label class="input-label">아이디 :</label>
@@ -74,8 +77,19 @@
                                 <label class="input-label">날짜 </label>
                                 <input type="text" class="form-control text-input" id="date">
                             </div>
-
                         </div>
+                        --%>
+                    	<div class="inquireBooking mt-3 ">
+                            <div class="input-gorup form-inline">
+                                <label class="input-label">이름 </label>
+                                <input type="text" class="form-control text-input" id="name">
+                            </div>
+                            <div class="input-gorup form-inline mt-3">
+                                <label class="input-label">전화번호 </label>
+                                <input type="text" class="form-control text-input" id="phoneNumber">
+                            </div>
+                    	</div>
+                        
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-success mt-3 mr-5" id="lookupBtn">조회 하기</button>
                         </div>
@@ -122,6 +136,7 @@
                 }
             });
 
+            /*
             $("#lookupBtn").on('click', function() {
                 if($("input[name=type]:checked").val() == "member") {
 
@@ -165,7 +180,46 @@
                     alert("조회 성공");
                 }
             });
-
+			*/
+			
+			
+			$("#lookupBtn").on("click", function() {
+				let name = $("#name").val();
+				let phoneNumber = $("#phoneNumber").val();
+				
+				let date = $(this).val();
+				let day = $(this).val();
+				let headcount = $(this).val();
+				let state = $(this).val();
+				
+				let text = "이름 : " + name + "<br>"
+				// validation
+				if (name == "") {
+					alert("이름을 입력해주세요");
+					return;
+				}
+				if (phoneNumber == "") {
+					alert("핸드폰 번호를 입력해주세요"	);
+					return;
+				}
+				
+				$.ajax({
+					type:"get",
+					url:"/lec06/inquire_booking",
+					data:{"name":name, "phoneNumber":phoneNumber, :date, :day, :headcount, :state},	// 어떤 값을 어떻게 저장할 것인지
+					success: function(data) {
+						if(name.equals(mybooking.name)) {
+							alert("이름 :" + data.name + "<br>날짜 : " + data.date + "<br>일수 : " + data.day + "<br>인원 : " + data.headcount + "<br>상태 : " + data.state);
+						}
+					},
+					error: function() {
+						alert("error")
+					}
+				});
+				
+				
+		
+			});
             var bannerList = ["http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg" 
             					, "http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner2.jpg"
             					, "http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner3.jpg"
