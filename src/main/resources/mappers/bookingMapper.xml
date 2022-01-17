@@ -49,9 +49,10 @@
  		)
  	</insert>
  
- 	<select id="selectBooking_NamePhone" resultType="String" parameterType="String" >
+ 	<select id="selectBooking_NamePhone" resultType="com.gyagoo.test.lec06.model.Booking" parameterType="map" >
  		SELECT
  			`name`
+ 			,	`phoneNumber`
  			,	`date`
  			,	`day`
  			,	`headcount`
@@ -62,6 +63,24 @@
  			`booking`
  		WHERE
  			`name` = #{name}
- 			`phoneNumber` = #{phoneNumber}
+ 			AND `phoneNumber` = #{phoneNumber}
  	</select>
+ 	
+ 	 	<select id="selectBookingbyNamePhoneNumber" resultType="com.gyagoo.test.lec06.model.Booking" parameterType="map" >
+ 		SELECT
+ 			`name`
+ 			,	`date`
+ 			,	`day`
+ 			,	`headcount`
+ 			,	`phoneNumber`
+ 			,	`state`
+ 			,	`createdAt`
+ 			,	`updatedAt`
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name} 
+ 			AND `phoneNumber` = #{phoneNumber}
+ 	</select>
+ 	
  </mapper>

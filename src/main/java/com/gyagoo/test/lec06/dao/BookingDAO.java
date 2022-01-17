@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gyagoo.test.lec06.model.Booking;
 
@@ -20,7 +21,11 @@ public interface BookingDAO {
 			@Param("date") Date date,
 			@Param("phoneNumber") String phoneNumber,
 			@Param("state") String state);
-	public List<Booking> selectBooking_NamePhone(
+	public Booking selectBooking_NamePhone(
+			@Param("name") String name,
+			@Param("phoneNumber") String phoneNumber);
+	
+	public Booking selectBookingbyNamePhoneNumber(
 			@Param("name") String name,
 			@Param("phoneNumber") String phoneNumber);
 }

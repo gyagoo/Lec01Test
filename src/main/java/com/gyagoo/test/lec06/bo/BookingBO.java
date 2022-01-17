@@ -30,7 +30,14 @@ public class BookingBO {
 	}
 	
 	// inquire
-	public List<Booking> inquireBooking(String name, String phoneNumber) {
+	public Booking inquireBooking(String name, String phoneNumber) {
 		return bookingDAO.selectBooking_NamePhone(name, phoneNumber);
+	}
+	
+	// lookup
+	// 이름과 전화번호를 통해 조회된 결과를 모두 가져와야 함 -> 여러개
+	// 객체 하나만 return 할 것이기 때문에 Booking
+	public Booking getBookingByNamePhoneNumber(String name, String phoneNumber) {
+		return bookingDAO.selectBookingbyNamePhoneNumber(name, phoneNumber);
 	}
 }

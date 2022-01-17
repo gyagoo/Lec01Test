@@ -119,6 +119,7 @@
     <script>
         $(document).ready(function() {
 
+        	/*
             // 데이트 피커 셋팅
             $( "#date" ).datepicker({
                 minDate:0, 
@@ -136,7 +137,6 @@
                 }
             });
 
-            /*
             $("#lookupBtn").on('click', function() {
                 if($("input[name=type]:checked").val() == "member") {
 
@@ -180,20 +180,15 @@
                     alert("조회 성공");
                 }
             });
+            
 			*/
 			
 			
-			$("#lookupBtn").on("click", function() {
+			$("#lookupBtn").on('click', function() {
 				let name = $("#name").val();
 				let phoneNumber = $("#phoneNumber").val();
 				
-				let date = $(this).val();
-				let day = $(this).val();
-				let headcount = $(this).val();
-				let state = $(this).val();
-				
-				let text = "이름 : " + name + "<br>"
-				// validation
+				// validation 추가할 것 -> ex.isNaN 숫자로만 이뤄진게 아닌 경우 true
 				if (name == "") {
 					alert("이름을 입력해주세요");
 					return;
@@ -205,19 +200,21 @@
 				
 				$.ajax({
 					type:"get",
-					url:"/lec06/inquire_booking",
-					data:{"name":name, "phoneNumber":phoneNumber, :date, :day, :headcount, :state},	// 어떤 값을 어떻게 저장할 것인지
+					url:"/lec06/inquire_booking",	//
+					data:{"name":name, "phoneNumber":phoneNumber},	// 어떤 값을 어떻게 저장할 것인지
+					
 					success: function(data) {
-						if(name.equals(mybooking.name)) {
-							alert("이름 :" + data.name + "<br>날짜 : " + data.date + "<br>일수 : " + data.day + "<br>인원 : " + data.headcount + "<br>상태 : " + data.state);
-						}
+						alert("이름 : " + data.name 
+								+ "\n날짜 : " + data.date 
+								+ "\n일수 : " + data.day 
+								+ "\n인원 : " + data.headcount 
+								+ "\n상태 : " + data.state);	// data.key를 통해 해당하는 value를 가져올 수 있다
 					},
 					error: function() {
-						alert("error")
+						alert("error");
 					}
 				});
-				
-				
+			
 		
 			});
             var bannerList = ["http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg" 
