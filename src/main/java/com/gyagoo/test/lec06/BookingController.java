@@ -10,7 +10,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -115,11 +114,35 @@ public class BookingController {
 //	answer
 	@ResponseBody
 	@GetMapping("/lec06/lookup")
-	public Booking lookup(@RequestParam("name") String name,
+	public Map<String, Object> lookup(@RequestParam("name") String name,
 			@RequestParam("phoneNumber") String phoneNumber) {
+		
 		Booking booking = bookingBO.getBookingByNamePhoneNumber(name, phoneNumber);
 		
-		return booking;
+		/*
+		하나의 객체를 return할 경우를 가정
+		select 결과가 여러개일 경우? 무조건 List(보통 List로 사용)
+		api는 responseBody에 담아서 데이터만 전달하는 역할(client)
+		ajax(server)와 분리되어 있음
+		
+		조회 가능한 데이터가 없는 경우 어떤 값들을 전달하는가? 객체는 null
+		null일 경우와 아닌 경우를 나누어서 처리하자 ! ! !
+		
+		- return값이 있는 형태가 이상적이다 -> Map을 통해 처리하자 ! ! !
+		
+		- 실패든 성공이든 하나의 규격으로 가는 것이 좋다
+		*/
+		
+		Map<String, Object> response = new HashMap<>();
+		if(booking == null) {	// 조회된 데이터가 없는 경우
+			response.put("result", "fail");
+		} else {
+			response.put("result", "success");
+			// 성공했을 때의 데이터 전달
+			response.put("booking", booking);
+		}
+
+		return response;
 	}
 		
 //		List<Booking> mybooking = bookingBO.inquireBooking(name, phoneNumber, null, 0, 0, phoneNumber);

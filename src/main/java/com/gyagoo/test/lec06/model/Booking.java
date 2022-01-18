@@ -9,7 +9,7 @@ public class Booking {
 	private String name;
 	private int headcount;
 	private int day;
-//	@DateTimeFormat(pattern = "yyyy년 M월 dd일") // -> 객체 형태로 받아올 때 사용
+	@DateTimeFormat(pattern = "yyyy년 M월 dd일") // -> 객체 형태로 받아올 때 사용
 	private Date date;
 	private String phoneNumber;
 	private String state;

@@ -200,15 +200,34 @@
 				
 				$.ajax({
 					type:"get",
-					url:"/lec06/inquire_booking",	//
+					url:"/lec06/lookup",	//
 					data:{"name":name, "phoneNumber":phoneNumber},	// 어떤 값을 어떻게 저장할 것인지
 					
+					// json을 쪼개서 문자열 형태로 사용 가능
 					success: function(data) {
-						alert("이름 : " + data.name 
-								+ "\n날짜 : " + data.date 
-								+ "\n일수 : " + data.day 
-								+ "\n인원 : " + data.headcount 
-								+ "\n상태 : " + data.state);	// data.key를 통해 해당하는 value를 가져올 수 있다
+						<%--
+						if (data == "") {
+							alert("조회 결과가 없습니다.");
+						} else {
+							alert("이름 : " + data.name 
+									+ "\n날짜 : " + data.date 
+									+ "\n일수 : " + data.day 
+									+ "\n인원 : " + data.headcount 
+									+ "\n상태 : " + data.state);	// data.key를 통해 해당하는 value를 가져올 수 있다
+						}
+						--%>
+						if (data.result == "fail") {
+							
+							alert("조회 결과가 없습니다.");
+							
+						} else if (data.result == "success") {
+							
+							alert("이름 : " + data.booking.name 
+									+ "\n날짜 : " + data.booking.date 
+									+ "\n일수 : " + data.booking.day 
+									+ "\n인원 : " + data.booking.headcount 
+									+ "\n상태 : " + data.booking.state);
+						}
 					},
 					error: function() {
 						alert("error");
